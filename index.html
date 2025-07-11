@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBRE Learning Tracker - 26 Week Schedule</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <h1 class="header-title">IBRE Learning Tracker</h1>
+                    <nav class="nav">
+                        <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+                        <button class="nav-btn" data-view="weekly">Weekly Plan</button>
+                        <button class="nav-btn" data-view="resources">Resources</button>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <div class="container">
+                <!-- Dashboard View -->
+                <div id="dashboard-view" class="view active">
+                    <div class="dashboard-grid">
+                        <div class="card">
+                            <div class="card__body">
+                                <h2>Overall Progress</h2>
+                                <div class="progress-container">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" id="overall-progress"></div>
+                                    </div>
+                                    <span class="progress-text" id="overall-progress-text">0%</span>
+                                </div>
+                                <p class="progress-description">Complete all tasks to reach your 6-month goal</p>
+                            </div>
+                        </div>
+
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-number" id="total-tasks">0</div>
+                                <div class="stat-label">Total Tasks</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="completed-tasks">0</div>
+                                <div class="stat-label">Completed</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="weeks-finished">0</div>
+                                <div class="stat-label">Weeks Finished</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="current-week">1</div>
+                                <div class="stat-label">Current Week</div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__body">
+                                <h3>Recent Activity</h3>
+                                <div id="recent-activity">
+                                    <p class="text-secondary">Complete some tasks to see your progress here!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weekly Plan View -->
+                <div id="weekly-view" class="view">
+                    <div class="weekly-header">
+                        <div class="week-selector">
+                            <button class="btn btn--outline" id="prev-week">← Previous</button>
+                            <select class="form-control" id="week-select">
+                                <!-- Options will be populated by JS -->
+                            </select>
+                            <button class="btn btn--outline" id="next-week">Next →</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="week-details">
+                                <h2 id="week-theme">Week Theme</h2>
+                                <div class="week-goals">
+                                    <h4>Goals:</h4>
+                                    <ul id="week-goals-list">
+                                        <!-- Goals will be populated by JS -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Tasks</h3>
+                            <div id="week-tasks">
+                                <!-- Tasks will be populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resources View -->
+                <div id="resources-view" class="view">
+                    <div class="resources-header">
+                        <h2>Learning Resources</h2>
+                        <div class="resources-controls">
+                            <input type="text" class="form-control" id="resource-search" placeholder="Search resources...">
+                            <select class="form-control" id="resource-filter">
+                                <option value="">All Types</option>
+                                <option value="article">Articles</option>
+                                <option value="video">Videos</option>
+                                <option value="tutorial">Tutorials</option>
+                                <option value="doc">Documentation</option>
+                                <option value="course">Courses</option>
+                                <option value="guide">Guides</option>
+                                <option value="cheatsheet">Cheat Sheets</option>
+                                <option value="site">Websites</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="resources-grid" id="resources-grid">
+                        <!-- Resources will be populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Include data inline -->
+    <script id="app-data" type="application/json">
+    {
+      "weeks": [
+        {"id":1,"theme":"Orientation & Environment","goals":["Set up tools","Master basic terminal commands"],"tasks":[{"id":"1-1","text":"Install R, RStudio, Git, Docker Desktop","resourceIds":["res_r_install","res_git_install","res_docker_install"]},{"id":"1-2","text":"Read Terminal cheat-sheet and practice navigation","resourceIds":["res_terminal_cheat"]},{"id":"1-3","text":"Create Bitbucket account & clone sample repo","resourceIds":["res_bitbucket_guide"]}]},
+        {"id":2,"theme":"R Fundamentals","goals":["Syntax, data types, vectors"],"tasks":[{"id":"2-1","text":"Work through freeCodeCamp R intro video","resourceIds":["res_r_freecode"]},{"id":"2-2","text":"Complete R for Beginners tutorial sections 1-3","resourceIds":["res_r_beginners"]}]},
+        {"id":3,"theme":"R Programming Basics","goals":["Control flow, functions, packages"],"tasks":[{"id":"3-1","text":"Finish R for Beginners tutorial","resourceIds":["res_r_beginners"]},{"id":"3-2","text":"Experiment with tidyverse packages","resourceIds":["res_r_tidiverse"]}]},
+        {"id":4,"theme":"Git Essentials","goals":["Local workflow","Commits","Branches"],"tasks":[{"id":"4-1","text":"Study Git cheat-sheet commands","resourceIds":["res_git_cheat"]},{"id":"4-2","text":"Create demo project, push to Bitbucket","resourceIds":["res_bitbucket_tutorial"]}]},
+        {"id":5,"theme":"SQL Foundations","goals":["SELECT, WHERE, JOIN"],"tasks":[{"id":"5-1","text":"Start 30-day SQL roadmap days 1-7","resourceIds":["res_sql_roadmap"]},{"id":"5-2","text":"Install PostgreSQL locally & run sample queries","resourceIds":["res_postgres_install"]}]},
+        {"id":6,"theme":"PostgreSQL Deep Dive","goals":["Data types, constraints","Indexes"],"tasks":[{"id":"6-1","text":"Work through Postgres tutorial sections on DDL","resourceIds":["res_postgres_tutorial"]},{"id":"6-2","text":"Design sample schema for budgeting data","resourceIds":[]} ]},
+        {"id":7,"theme":"Docker Basics","goals":["Images, containers","Dockerfile"],"tasks":[{"id":"7-1","text":"Read Docker Roadmap basics section","resourceIds":["res_docker_roadmap"]},{"id":"7-2","text":"Containerize simple R script","resourceIds":["res_dockerfile_guide"]}]},
+        {"id":8,"theme":"Docker & R","goals":["Multi-stage builds","Volumes"],"tasks":[{"id":"8-1","text":"Refactor Dockerfile with multi-stage build","resourceIds":["res_docker_multistage"]},{"id":"8-2","text":"Mount volume to persist data","resourceIds":["res_docker_volumes"]}]},
+        {"id":9,"theme":"Statistics Refresher","goals":["Descriptive stats in R"],"tasks":[{"id":"9-1","text":"Complete Statistics with R – Beginner course modules 1-3","resourceIds":["res_stats_r_course"]}]},
+        {"id":10,"theme":"Statistical Modeling","goals":["Regression, t-tests"],"tasks":[{"id":"10-1","text":"Continue Statistics with R course","resourceIds":["res_stats_r_course"]},{"id":"10-2","text":"Run models on company sample data","resourceIds":[]} ]},
+        {"id":11,"theme":"Advanced Git & Bitbucket","goals":["Pull requests","Pipelines"],"tasks":[{"id":"11-1","text":"Learn Bitbucket pipelines CI basics","resourceIds":["res_bitbucket_ci"]},{"id":"11-2","text":"Configure branching model for project","resourceIds":["res_git_flow"]}]},
+        {"id":12,"theme":"R + Python Interop","goals":["Reticulate package"],"tasks":[{"id":"12-1","text":"Read R-Python interoperability guide","resourceIds":["res_reticulate"]},{"id":"12-2","text":"Prototype calling pandas from R","resourceIds":[]} ]},
+        {"id":13,"theme":"Snowflake Fundamentals","goals":["Architecture","Warehouses"],"tasks":[{"id":"13-1","text":"Go through Snowflake docs overview","resourceIds":["res_snowflake_overview"]},{"id":"13-2","text":"Spin up trial account, load sample data","resourceIds":["res_snowflake_trial"]}]},
+        {"id":14,"theme":"Snowflake SQL","goals":["Querying, stages"],"tasks":[{"id":"14-1","text":"Complete Snowflake SQL tutorials","resourceIds":["res_snowflake_sql"]}]},
+        {"id":15,"theme":"Data Engineering Workflow","goals":["ETL with R + Postgres + Docker"],"tasks":[{"id":"15-1","text":"Build ETL pipeline in Docker compose","resourceIds":["res_docker_compose"]}]},
+        {"id":16,"theme":"Optimization & Automation","goals":["Performance tuning","Scheduling"],"tasks":[{"id":"16-1","text":"Profile R code, optimize with Rcpp","resourceIds":["res_r_optimization"]},{"id":"16-2","text":"Automate tasks with cron in Docker","resourceIds":["res_docker_cron"]}]},
+        {"id":17,"theme":"Snowflake Advanced","goals":["Data sharing","Snowpark"],"tasks":[{"id":"17-1","text":"Study Snowflake warehouse scaling docs","resourceIds":["res_snowflake_warehouse"]}]},
+        {"id":18,"theme":"SQL Advanced","goals":["Window functions","CTEs"],"tasks":[{"id":"18-1","text":"Finish SQL roadmap advanced weeks","resourceIds":["res_sql_roadmap"]}]},
+        {"id":19,"theme":"Docker Orchestration","goals":["Swarm","Compose v3"],"tasks":[{"id":"19-1","text":"Deploy multi-container app","resourceIds":["res_docker_swarm"]}]},
+        {"id":20,"theme":"Scripting & CLI Mastery","goals":["Bash scripting"],"tasks":[{"id":"20-1","text":"Write scripts to automate git + docker tasks","resourceIds":["res_bash_tutorial"]}]},
+        {"id":21,"theme":"Capstone Prep","goals":["Define integration project"],"tasks":[{"id":"21-1","text":"Outline project requirements","resourceIds":[]}]},
+        {"id":22,"theme":"Capstone Build","goals":["Develop solution"],"tasks":[{"id":"22-1","text":"Implement code and infrastructure","resourceIds":[]}]},
+        {"id":23,"theme":"Capstone Test","goals":["Unit & integration tests"],"tasks":[{"id":"23-1","text":"Run tests in Bitbucket pipeline","resourceIds":["res_bitbucket_ci"]}]},
+        {"id":24,"theme":"Capstone Deploy","goals":["Deploy to staging"],"tasks":[{"id":"24-1","text":"Deploy Docker images","resourceIds":["res_docker_deploy"]}]},
+        {"id":25,"theme":"Capstone Review","goals":["Performance analysis"],"tasks":[{"id":"25-1","text":"Generate stats reports","resourceIds":[]}]},
+        {"id":26,"theme":"Wrap-up & Reflection","goals":["Document learning","Plan next steps"],"tasks":[{"id":"26-1","text":"Write retrospective blog post","resourceIds":[]} ]}
+      ],
+      "resources": [
+        {"id":"res_r_install","title":"Installing R and RStudio","url":"https://cran.r-project.org/","type":"article"},
+        {"id":"res_git_install","title":"Git Installation Guide","url":"https://git-scm.com/book/en/v2/Getting-Started-Installing-Git","type":"article"},
+        {"id":"res_docker_install","title":"Docker Desktop Install","url":"https://docs.docker.com/get-docker/","type":"doc"},
+        {"id":"res_terminal_cheat","title":"Terminal Commands Cheat Sheet","url":"https://github.com/0nn0/terminal-mac-cheatsheet","type":"cheatsheet"},
+        {"id":"res_bitbucket_guide","title":"Bitbucket Getting Started","url":"https://bitbucket.org/product/guides","type":"guide"},
+        {"id":"res_r_freecode","title":"freeCodeCamp R Programming Course","url":"https://www.youtube.com/watch?v=_V8eKsto3Ug","type":"video"},
+        {"id":"res_r_beginners","title":"R for Beginners Tutorial","url":"https://www.rensvandeschoot.com/tutorials/r-for-beginners/","type":"tutorial"},
+        {"id":"res_r_tidiverse","title":"Tidyverse Packages","url":"https://www.tidyverse.org/","type":"site"},
+        {"id":"res_git_cheat","title":"Git Commands Cheat Sheet","url":"https://education.github.com/git-cheat-sheet-education.pdf","type":"cheatsheet"},
+        {"id":"res_bitbucket_tutorial","title":"Learn Git with Bitbucket Cloud","url":"https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud","type":"tutorial"},
+        {"id":"res_sql_roadmap","title":"Learn SQL in 30 Days Roadmap","url":"https://datalemur.com/blog/learn-sql-in-30-days-roadmap","type":"guide"},
+        {"id":"res_postgres_install","title":"PostgreSQL Installation","url":"https://www.postgresql.org/download/","type":"doc"},
+        {"id":"res_postgres_tutorial","title":"PostgreSQL Tutorial","url":"https://www.postgresqltutorial.com/","type":"tutorial"},
+        {"id":"res_docker_roadmap","title":"Docker Roadmap 2025","url":"https://www.geeksforgeeks.org/docker-roadmap/","type":"article"},
+        {"id":"res_dockerfile_guide","title":"Dockerfile Best Practices","url":"https://docs.docker.com/develop/develop-images/dockerfile_best-practices/","type":"doc"},
+        {"id":"res_docker_multistage","title":"Multi-stage Builds","url":"https://docs.docker.com/build/building/multi-stage/","type":"doc"},
+        {"id":"res_docker_volumes","title":"Docker Volumes","url":"https://docs.docker.com/storage/volumes/","type":"doc"},
+        {"id":"res_stats_r_course","title":"Statistics with R – Beginner Level","url":"https://www.udemy.com/course/statistics-with-r-beginner-level/","type":"course"},
+        {"id":"res_bitbucket_ci","title":"Bitbucket Pipelines Docs","url":"https://support.atlassian.com/bitbucket-cloud/docs/get-started-with-bitbucket-pipelines/","type":"doc"},
+        {"id":"res_git_flow","title":"Git Flow Model","url":"https://nvie.com/posts/a-successful-git-branching-model/","type":"article"},
+        {"id":"res_reticulate","title":"Reticulate: R-Python Integration","url":"https://rstudio.github.io/reticulate/","type":"doc"},
+        {"id":"res_snowflake_overview","title":"Snowflake Overview","url":"https://docs.snowflake.com/en/user-guide/intro-key-concepts","type":"doc"},
+        {"id":"res_snowflake_trial","title":"Snowflake Free Trial","url":"https://signup.snowflake.com/","type":"site"},
+        {"id":"res_snowflake_sql","title":"Snowflake SQL Tutorials","url":"https://quickstarts.snowflake.com/guide/basic_data_analytics_with_snowflake/index.html","type":"tutorial"},
+        {"id":"res_docker_compose","title":"Docker Compose Examples","url":"https://docs.docker.com/compose/gettingstarted/","type":"doc"},
+        {"id":"res_r_optimization","title":"Optimizing R Code","url":"https://adv-r.hadley.nz/perf.html","type":"article"},
+        {"id":"res_docker_cron","title":"Run Cron in Docker","url":"https://www.baeldung.com/ops/docker-cron-job","type":"article"},
+        {"id":"res_snowflake_warehouse","title":"Snowflake Warehouses","url":"https://docs.snowflake.com/en/user-guide/warehouses-overview","type":"doc"},
+        {"id":"res_docker_swarm","title":"Docker Swarm Guide","url":"https://docs.docker.com/engine/swarm/","type":"doc"},
+        {"id":"res_bash_tutorial","title":"Bash Scripting Tutorial","url":"https://ryanstutorials.net/bash-scripting-tutorial/","type":"tutorial"},
+        {"id":"res_docker_deploy","title":"Deploying Docker Containers","url":"https://www.digitalocean.com/community/tutorial_series/docker","type":"article"}
+      ]
+    }
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
